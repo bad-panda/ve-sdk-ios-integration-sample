@@ -56,13 +56,20 @@ class ViewController: UIViewController {
       isEditable: true,
       title: "My awesome track"
     )
+    
+    let videoURL = Bundle.main.bundleURL
+      .appendingPathComponent("Videos", isDirectory: true)
+      .appendingPathComponent("Microscope.mov")
     // Paste a music track as a track preset at the camera screen to record video with music
-    videoEditorSDK?.presentVideoEditor(
-      from: self,
-      animated: true,
-      musicTrack: nil,
-      completion: nil
-    )
+//    videoEditorSDK?.presentVideoEditor(
+//      from: self,
+//      animated: true,
+//      musicTrack: nil,
+//      completion: nil
+//    )
+    videoEditorSDK?.presentVideoEditor(withVideoItems: [videoURL], from: self, animated: true, completion: {
+        //
+    })
   }
   
   private func createVideoEditorConfiguration() -> VideoEditorConfig {
